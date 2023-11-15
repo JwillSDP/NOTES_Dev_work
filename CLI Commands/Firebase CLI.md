@@ -12,6 +12,10 @@ npm install -g firebase-tools
 ``` bash
 firebase login
 ```
+### Firebase Login CI
+``` bash
+firebase login:ci
+```
 
 ### Initialize a Firebase project
 ``` bash
@@ -19,10 +23,6 @@ firebase init
 ```
 > Many common tasks performed using the CLI, such as deploying to a Firebase project, require a project directory. You establish a project directory using the firebase init command. A project directory is usually the same directory as your source control root, and after running firebase init, the directory contains a firebase.json configuration file.
 > 
-### Firebase Logout
-``` bash
-firebase logout
-```
 ### Firebase projects
 ``` bash
 firebase projects:list
@@ -32,9 +32,9 @@ firebase projects:list
 ``` bash
 npm install -g firebase-tools
 ```
-### Firebase Login CI
+### Firebase Logout
 ``` bash
-firebase login:ci
+firebase logout
 ```
 
 ### Use project aliase
@@ -48,6 +48,11 @@ firebase use
 ``` bash
 firebase use --clear
 ```
+
+
+
+
+
 ###  View and test your Firebase project on locally hosted URLs
 ``` bash
 firebase serve --only hosting
