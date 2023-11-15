@@ -26,7 +26,12 @@ firebase login
 firebase init
 ```
 > Many common tasks performed using the CLI, such as deploying to a Firebase project, require a project directory. You establish a project directory using the firebase init command. A project directory is usually the same directory as your source control root, and after running firebase init, the directory contains a firebase.json configuration file.
-
+> The firebase init command steps you through setting up your project directory and some Firebase products. During project initialization
+> - Select desired Firebase products to set up in your Firebase project
+> - Select a default Firebase project
+> - Firebase automatically creates the following two files:
+> - firebase.json configuration file that lists your project configuration.
+> - .firebaserc file that stores your project aliases.
 <br></br>
 ## Firebase projects
 ``` bash
