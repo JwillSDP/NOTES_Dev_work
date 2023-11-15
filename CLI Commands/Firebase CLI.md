@@ -43,13 +43,6 @@ firebase projects:list
 
 <br></br>
 
-## Update the firebase CLI version
-``` bash
-npm install -g firebase-tools
-```
-
-<br></br>
-
 ### Firebase Logout
 ``` bash
 firebase logout
