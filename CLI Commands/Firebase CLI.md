@@ -1,4 +1,5 @@
 # [Firebase CLI reference](https://firebase.google.com/docs/cli)
+#### [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
 
 ### Firebase Login
 ``` bash
