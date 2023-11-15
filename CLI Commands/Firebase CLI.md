@@ -39,9 +39,9 @@ firebase use --clear
 ``` bash
 firebase serve --only hosting
 ```
-### Firebase Login
+### Install the Firebase CLI via npm
 ``` bash
-firebase login
+npm install -g firebase-tools
 ```
 ### Firebase Login
 ``` bash
