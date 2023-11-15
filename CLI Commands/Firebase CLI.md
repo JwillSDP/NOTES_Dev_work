@@ -30,8 +30,8 @@ firebase init
 > - Select desired Firebase products to set up in your Firebase project
 > - Select a default Firebase project
 > - Firebase automatically creates the following two files:
-> 1 **firebase.json** configuration file that lists your project configuration.
-> 2 **.firebaserc** file that stores your project aliases.
+> - **firebase.json** configuration file that lists your project configuration.
+> - **.firebaserc** file that stores your project aliases.
 <br></br>
 ## Firebase projects
 ``` bash
