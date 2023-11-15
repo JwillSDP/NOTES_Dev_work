@@ -9,10 +9,10 @@ npm install -g firebase-tools
 > This command enables the globally available Firebase command.
 
 <br></br>
-<br></br>
 
 ***
 
+<br></br>
 
 
 # Log in and test the Firebase CLI
@@ -58,10 +58,9 @@ firebase use
 firebase use --clear
 ```
 <br></br>
-<br></br>
+
 
 ***
-<br></br>
 <br></br>
 
 
