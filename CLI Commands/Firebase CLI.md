@@ -56,11 +56,11 @@ firebase use --clear
 ```
 <br></br>
 <br></br>
-<br></br>
+
 ***
 <br></br>
 <br></br>
-<br></br>
+
 
 ##  View and test your Firebase project on locally hosted URLs
 ``` bash
