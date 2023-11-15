@@ -10,11 +10,7 @@ npm install -g firebase-tools
 </br>
 </br>
 </br>
-</br>
-</br>
-</br>
-</br>
-</br>
+
 ## Log in and test the Firebase CLI
 ### Log into Firebase using your Google account
 ``` bash
@@ -57,18 +53,13 @@ firebase use
 ``` bash
 firebase use --clear
 ```
-
-
-
-
-
+</br>
+</br>
+</br>
 ---
-
-
-
-
-
-
+</br>
+</br>
+</br>
 
 ###  View and test your Firebase project on locally hosted URLs
 ``` bash
