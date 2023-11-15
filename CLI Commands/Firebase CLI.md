@@ -8,9 +8,7 @@ npm install -g firebase-tools
 ```
 > This command enables the globally available Firebase command.
 
-<br></br>
 
-***
 
 <br></br>
 
@@ -60,8 +58,6 @@ firebase use --clear
 <br></br>
 
 
-***
-<br></br>
 
 
 ##  View and test your Firebase project on locally hosted URLs
