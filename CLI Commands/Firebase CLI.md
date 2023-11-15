@@ -7,12 +7,14 @@ npm install -g firebase-tools
 ```
 > This command enables the globally available firebase command.
 
+
 ## Log in and test the Firebase CLI
 ### Log into Firebase using your Google account
 ``` bash
 firebase login
 ```
 > After installing the CLI, you must authenticate. Then you can confirm authentication by listing your Firebase projects. The firebase login command opens a web page that connects to localhost on your machine. If you're using a remote machine and don't have access to localhost, run the command with the flag --no-localhost.
+
 
 ### Initialize a Firebase project
 ``` bash
@@ -27,10 +29,12 @@ firebase projects:list
 ```
 > Test that the CLI is properly installed and accessing your account by listing your Firebase projects. The displayed list should be the same as the Firebase projects listed in the [Firebase console](https://console.firebase.google.com/u/0/?_gl=1*14imetw*_ga*NjE2NDk0NjYyLjE2OTI1NDUxMjI.*_ga_CW55HF8NVT*MTY5MjU0NTEyMi4xLjAuMTY5MjU0NTEyMi4wLjAuMA..&pli=1)
 
+
 ### Update the firebase CLI version
 ``` bash
 npm install -g firebase-tools
 ```
+
 
 ### Firebase Logout
 ``` bash
