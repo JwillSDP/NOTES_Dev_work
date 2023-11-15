@@ -1,5 +1,5 @@
 # Firebase CLI reference
-## [Firebase CLI reference](https://firebase.google.com/docs/cli)
+## [Firebase CLI reference LINK](https://firebase.google.com/docs/cli)
 
 ### Firebase Login
 ``` bash
