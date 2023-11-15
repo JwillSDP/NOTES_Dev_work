@@ -9,7 +9,6 @@ npm install -g firebase-tools
 
 <br></br>
 <br></br>
-<br></br>
 
 
 # Log in and test the Firebase CLI
