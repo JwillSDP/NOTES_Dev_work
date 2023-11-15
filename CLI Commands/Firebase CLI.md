@@ -56,7 +56,7 @@ firebase use --clear
 </br>
 </br>
 </br>
----
+***
 </br>
 </br>
 </br>
@@ -64,16 +64,4 @@ firebase use --clear
 ###  View and test your Firebase project on locally hosted URLs
 ``` bash
 firebase serve --only hosting
-```
-### Firebase Login
-``` bash
-firebase login
-```
-### Firebase Login
-``` bash
-firebase login
-```
-### Firebase Login
-``` bash
-firebase login
 ```
