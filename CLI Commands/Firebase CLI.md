@@ -29,13 +29,13 @@ firebase use
 
 
 
-### Firebase Login
+### Clears the active project
 ``` bash
-firebase login
+firebase use --clear
 ```
-### Firebase Login
+###  View and test your Firebase project on locally hosted URLs
 ``` bash
-firebase login
+firebase serve --only hosting
 ```
 ### Firebase Login
 ``` bash
