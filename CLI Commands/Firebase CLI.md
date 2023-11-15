@@ -21,6 +21,7 @@ firebase login
 > After installing the CLI, you must authenticate. Then you can confirm authentication by listing your Firebase projects. The firebase login command opens a web page that connects to localhost on your machine. If you're using a remote machine and don't have access to localhost, run the command with the flag --no-localhost.
 
 <br></br>
+
 ## Initialize a Firebase project
 ``` bash
 firebase init
@@ -29,10 +30,11 @@ firebase init
 > The firebase init command steps you through setting up your project directory and some Firebase products. During project initialization:
 > - Select desired Firebase products to set up in your Firebase project
 > - Select a default Firebase project
-> - Firebase automatically creates the following two files:
 > - **firebase.json** configuration file that lists your project configuration.
 > - **.firebaserc** file that stores your project aliases.
+
 <br></br>
+
 ## Firebase projects
 ``` bash
 firebase projects:list
@@ -40,26 +42,33 @@ firebase projects:list
 > Test that the CLI is properly installed and accessing your account by listing your Firebase projects. The displayed list should be the same as the Firebase projects listed in the [Firebase console](https://console.firebase.google.com/u/0/?_gl=1*14imetw*_ga*NjE2NDk0NjYyLjE2OTI1NDUxMjI.*_ga_CW55HF8NVT*MTY5MjU0NTEyMi4xLjAuMTY5MjU0NTEyMi4wLjAuMA..&pli=1)
 
 <br></br>
+
 ## Update the firebase CLI version
 ``` bash
 npm install -g firebase-tools
 ```
 
 <br></br>
+
 ### Firebase Logout
 ``` bash
 firebase logout
 ```
+
 <br></br>
+
 ## Use project aliase
 ``` bash
 firebase use
 ```
+
 <br></br>
+
 ## Clears the active project
 ``` bash
 firebase use --clear
 ```
+
 <br></br>
 
 
