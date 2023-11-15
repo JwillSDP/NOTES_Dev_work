@@ -1,8 +1,6 @@
 # **[Firebase CLI reference](https://firebase.google.com/docs/cli)**
 #### [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
 
----
-
 ### Install the Firebase CLI via npm
 ``` bash
 npm install -g firebase-tools
@@ -10,9 +8,6 @@ npm install -g firebase-tools
 > This command enables the globally available firebase command.
 
 ## Log in and test the Firebase CLI
-
----
-
 ### Firebase Login
 ``` bash
 firebase login
