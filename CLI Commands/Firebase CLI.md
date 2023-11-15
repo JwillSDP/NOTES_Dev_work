@@ -8,6 +8,10 @@ npm install -g firebase-tools
 > This command enables the globally available firebase command.
 
 
+
+
+
+
 ## Log in and test the Firebase CLI
 ### Log into Firebase using your Google account
 ``` bash
@@ -51,7 +55,17 @@ firebase use
 firebase use --clear
 ```
 
+
+
+
+
 ---
+
+
+
+
+
+
 
 ###  View and test your Firebase project on locally hosted URLs
 ``` bash
