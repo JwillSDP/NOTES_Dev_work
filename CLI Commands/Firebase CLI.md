@@ -10,6 +10,29 @@ firebase logout
 ``` bash
 firebase projects:list
 ```
+### Update the firebase CLI version
+``` bash
+npm install -g firebase-tools
+```
+### Firebase Login CI
+``` bash
+firebase login:ci
+```
+### Initialize a Firebase project
+``` bash
+firebase init
+```
+### Use project aliase
+``` bash
+firebase use
+```
+
+
+
+### Firebase Login
+``` bash
+firebase login
+```
 ### Firebase Login
 ``` bash
 firebase login
