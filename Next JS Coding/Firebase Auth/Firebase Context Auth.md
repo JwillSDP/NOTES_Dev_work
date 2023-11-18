@@ -52,7 +52,7 @@ export const UserAuth = () => {
 # Use Firebase Context
 
 ```jsx
-const { user, googleSignIn, logOut } = UserAuth();
+   const { user, googleSignIn, logOut } = UserAuth();
    const [loading, setLoading] = useState(true);
 
    const handleSignIn = async () => {
