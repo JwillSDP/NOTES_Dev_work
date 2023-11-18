@@ -46,6 +46,7 @@ export const UserAuth = () => {
 
 ```
 
+# Use Firebase Context
 
 ```jsx
 const { user, googleSignIn, logOut } = UserAuth();
