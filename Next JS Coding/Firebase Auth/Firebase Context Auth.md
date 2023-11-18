@@ -46,6 +46,9 @@ export const UserAuth = () => {
 
 ```
 
+<br/>
+
+
 # Use Firebase Context
 
 ```jsx
