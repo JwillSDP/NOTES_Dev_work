@@ -44,3 +44,42 @@ onAuthStateChanged(auth, (user) => {
 
 <br></br>
 
+# Get the currently signed-in user
+
+```jsx
+import { getAuth } from "firebase/auth";
+
+const user = auth.currentUser;
+if (user !== null) {
+  const displayName = user.displayName;
+  const email = user.email;
+  const photoURL = user.photoURL;
+  const emailVerified = user.emailVerified;
+
+  // The user's ID, unique to the Firebase project. Do NOT use
+  // this value to authenticate with your backend server, if
+  // you have one. Use User.getToken() instead.
+  const uid = user.uid;
+}
+```
+> For each of your app's pages that need information about the signed-in user, attach an observer to the global authentication object. This observer gets called whenever the user's sign-in state changes. Attach the observer using the onAuthStateChanged method. When a user successfully signs in, you can get information about the user in the observer.
+
+## Get a user's provider-specific profile information
+```jsx
+import { getAuth } from "firebase/auth";
+const user = auth.currentUser;
+
+if (user !== null) {
+  user.providerData.forEach((profile) => {
+    console.log("Sign-in provider: " + profile.providerId);
+    console.log("  Provider-specific UID: " + profile.uid);
+    console.log("  Name: " + profile.displayName);
+    console.log("  Email: " + profile.email);
+    console.log("  Photo URL: " + profile.photoURL);
+  });
+}
+
+```
+> To get the profile information retrieved from the sign-in providers linked to a user, use the providerData property. 
+<br></br>
+
