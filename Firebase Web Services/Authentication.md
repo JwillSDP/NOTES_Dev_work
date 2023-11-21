@@ -62,9 +62,11 @@ if (user !== null) {
   const uid = user.uid;
 }
 ```
+
 > For each of your app's pages that need information about the signed-in user, attach an observer to the global authentication object. This observer gets called whenever the user's sign-in state changes. Attach the observer using the onAuthStateChanged method. When a user successfully signs in, you can get information about the user in the observer.
 
 ## Get a user's provider-specific profile information
+
 ```jsx
 import { getAuth } from "firebase/auth";
 const user = auth.currentUser;
@@ -80,10 +82,12 @@ if (user !== null) {
 }
 
 ```
-> To get the profile information retrieved from the sign-in providers linked to a user, use the providerData property. 
+> To get the profile information retrieved from the sign-in providers linked to a user, use the providerData property.
+
 <br></br>
 
 ## To sign out a user
+
 ```jsx
 import { getAuth, signOut } from "firebase/auth";
 signOut(auth).then(() => {
@@ -92,7 +96,9 @@ signOut(auth).then(() => {
   // An error happened.
 });
 ```
+
 > In your apps, the recommended way to know the auth status of your user is to set an observer on the Auth object. You can then get the user's basic profile information from the User object.
+
 <br></br>
 <br></br>
 <br></br>
@@ -112,7 +118,9 @@ signOut(auth).then(() => {
 > - refreshToken
 > - tenantId
 > - uid
+
 <br></br>
+
 > ## Methods
 > - delete
 > - getIdToken
