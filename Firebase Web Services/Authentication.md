@@ -112,5 +112,29 @@ signOut(auth).then(() => {
 > - refreshToken
 > - tenantId
 > - uid
+<br></br>
+> ## Methods
+> - delete
+> - getIdToken
+> - getIdTokenResult
+> - linkAndRetrieveDataWithCredential
+> - linkWithCredential
+> - linkWithPhoneNumber
+> - linkWithPopup
+> - linkWithRedirect
+> - reauthenticateAndRetrieveDataWithCredential
+> - reauthenticateWithCredential
+> - reauthenticateWithPhoneNumber
+> - reauthenticateWithPopup
+> - reauthenticateWithRedirect
+> - reload
+> - sendEmailVerification
+> - toJSON
+> - unlink
+> - updateEmail
+> - updatePassword
+> - updatePhoneNumber
+> - updateProfile
+> - verifyBeforeUpdateEmail
 
 
