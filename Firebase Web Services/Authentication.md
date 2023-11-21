@@ -98,19 +98,19 @@ signOut(auth).then(() => {
 <br></br>
 
 # [Firebase User Object](https://firebase.google.com/docs/reference/js/v8/firebase.User)
-> Properties
-> displayName
-email
-emailVerified
-isAnonymous
-metadata
-multiFactor
-phoneNumber
-photoURL
-providerData
-providerId
-refreshToken
-tenantId
-uid
+> ## Properties
+> - displayName
+> - email
+> - emailVerified
+> - isAnonymous
+> - metadata
+> - multiFactor
+> - phoneNumber
+> - photoURL
+> - providerData
+> - providerId
+> - refreshToken
+> - tenantId
+> - uid
 
 
