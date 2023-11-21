@@ -83,3 +83,34 @@ if (user !== null) {
 > To get the profile information retrieved from the sign-in providers linked to a user, use the providerData property. 
 <br></br>
 
+## To sign out a user
+```jsx
+import { getAuth, signOut } from "firebase/auth";
+signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+```
+> In your apps, the recommended way to know the auth status of your user is to set an observer on the Auth object. You can then get the user's basic profile information from the User object.
+<br></br>
+<br></br>
+<br></br>
+
+# [Firebase User Object](https://firebase.google.com/docs/reference/js/v8/firebase.User)
+> Properties
+> displayName
+email
+emailVerified
+isAnonymous
+metadata
+multiFactor
+phoneNumber
+photoURL
+providerData
+providerId
+refreshToken
+tenantId
+uid
+
+
