@@ -1,6 +1,12 @@
 
 # Firebase Context Auth
 
+> Firebase Authentication JS SDK and initialize Firebase Authentication
+```bash
+npm install firebase
+```
+> When you register your app with Firebase, you'll get a Firebase configuration object that you'll use to connect your app with your Firebase project resources.
+<br></br>
 ```jsx
 "use client";
 import { useContext, createContext, useState, useEffect } from "react";
