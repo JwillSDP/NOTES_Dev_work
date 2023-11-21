@@ -28,3 +28,19 @@ signInWithEmailAndPassword(auth, email, password)
 > Create a form that allows existing users to sign in using their email address and password. When a user completes the form, call the signInWithEmailAndPassword method
 
 <br></br>
+
+# Set an authentication state observer and get user data
+
+```jsx
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+onAuthStateChanged(auth, (user) => {
+  if (user) {   
+    const uid = user.uid;   
+  } else {   
+  }
+});
+```
+> For each of your app's pages that need information about the signed-in user, attach an observer to the global authentication object. This observer gets called whenever the user's sign-in state changes. Attach the observer using the onAuthStateChanged method. When a user successfully signs in, you can get information about the user in the observer.
+
+<br></br>
+
