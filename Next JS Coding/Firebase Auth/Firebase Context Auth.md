@@ -46,6 +46,12 @@ export const UserAuth = () => {
 ```
 ## Context/Context.jsx
 
+## Base Code for Implementation of useContext.
+>  - Import react and "use client"
+>  - Create context in the AuthContext variable
+>  - Create Context Provider
+>  - Pass Children components
+>  - Export Provider and useContext
 
 ```jsx
 "use client";
@@ -67,15 +73,12 @@ export const UserAuth = () => {
 };
 
 ```
-## Base Code for Implementation of useContext.
->  - Import react and "use client"
->  - Create context in the AuthContext variable
->  - Create Context Provider
->  - Pass Children components
->  - Export Provider and useContext
 
 
 <br/>
+## Get User Auth from google 
+>  - import onAuthStateChanged from firebase/auth
+>  - set change to user state
 
 ```jsx
 "use client";
@@ -106,9 +109,6 @@ export const UserAuth = () => {
 };
 
 ```
-## Get User Auth from google 
->  - import onAuthStateChanged from firebase/auth
->  - set change to user state
 
 # Use Firebase Context
 
