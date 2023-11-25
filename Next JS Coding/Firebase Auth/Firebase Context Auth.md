@@ -47,6 +47,44 @@ export const UserAuth = () => {
 
 ```
 
+
+
+```jsx
+"use client";
+import { useContext, createContext, useState, useEffect } from "react";
+
+
+const AuthContext = createContext();
+
+export const AuthContextProvider = ({ children }) => {
+   const [user, setUser] = useState(null); 
+
+   useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+         setUser(currentUser);
+      });
+      return () => unsubscribe();
+   }, [user]);
+
+   return (
+      <AuthContext.Provider value={{ user}}>
+         {children}
+      </AuthContext.Provider>
+   );
+};
+
+export const UserAuth = () => {
+   return useContext(AuthContext);
+};
+
+```
+> ## Base Code for Implementation of useContext.
+>  - Create context in the AuthContext variable
+>  - Import react and "use client"
+>  - Create Context Provider
+>  - Assign state values
+>  - Pass "value" property to Provider --> add values
+
 <br/>
 
 
