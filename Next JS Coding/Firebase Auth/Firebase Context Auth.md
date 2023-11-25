@@ -67,7 +67,7 @@ export const UserAuth = () => {
 };
 
 ```
-> ## Base Code for Implementation of useContext.
+## Base Code for Implementation of useContext.
 >  - Import react and "use client"
 >  - Create context in the AuthContext variable
 >  - Create Context Provider
