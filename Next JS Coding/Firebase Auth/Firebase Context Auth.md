@@ -44,8 +44,7 @@ export const UserAuth = () => {
 };
 
 ```
-
-> ## Context/Context.jsx
+## Context/Context.jsx
 
 
 ```jsx
@@ -107,7 +106,7 @@ export const UserAuth = () => {
 };
 
 ```
-> ## Get User Auth from google 
+## Get User Auth from google 
 >  - import onAuthStateChanged from firebase/auth
 >  - set change to user state
 
