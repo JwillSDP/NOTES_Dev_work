@@ -2,48 +2,7 @@
 # Firebase Context Auth
 
 
-```jsx
 
-import {
-   signInWithPopup,
-   signOut,
-   onAuthStateChanged,
-   GoogleAuthProvider,
-} from "firebase/auth";
-import { auth } from "../_firebaseAuth";
-
-const AuthContext = createContext();
-
-
-
-   const googleSignIn = () => {
-      const provider = new GoogleAuthProvider();
-      signInWithPopup(auth, provider);
-   };
-
-   const logOut = () => {
-      signOut(auth);
-   };
-
-   useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-         setUser(currentUser);
-      });
-      return () => unsubscribe();
-   }, [user]);
-
-   return (
-      <AuthContext.Provider value={{ user, googleSignIn, logOut }}>
-         {children}
-      </AuthContext.Provider>
-   );
-};
-
-export const UserAuth = () => {
-   return useContext(AuthContext);
-};
-
-```
 # Context/Context.jsx
 <br/>
 
@@ -111,6 +70,50 @@ export const UserAuth = () => {
 };
 
 ```
+## Add Google Sign In
+```jsx
+"use client";
+import { useContext, createContext, useState, useEffect } from "react";
+import {
+   signInWithPopup,
+   signOut,
+   onAuthStateChanged,
+   GoogleAuthProvider,
+} from "firebase/auth";
+import { auth } from "../_firebaseAuth";
+
+const AuthContext = createContext();
+
+   const googleSignIn = () => {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider);
+   };
+
+   const logOut = () => {
+      signOut(auth);
+   };
+
+   useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+         setUser(currentUser);
+      });
+      return () => unsubscribe();
+   }, [user]);
+
+   return (
+      <AuthContext.Provider value={{ user, googleSignIn, logOut }}>
+         {children}
+      </AuthContext.Provider>
+   );
+};
+
+export const UserAuth = () => {
+   return useContext(AuthContext);
+};
+
+```
+## Get User Auth from google 
+>  Add sign in
 
 # Use Firebase Context
 
