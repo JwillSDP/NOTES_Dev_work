@@ -1,8 +1,3 @@
-
-# Firebase Context Auth
-
-
-
 # Context/Context.jsx
 <br/>
 
