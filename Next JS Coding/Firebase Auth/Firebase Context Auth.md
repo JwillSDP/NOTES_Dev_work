@@ -44,7 +44,8 @@ export const UserAuth = () => {
 };
 
 ```
-## Context/Context.jsx
+# Context/Context.jsx
+<br/>
 
 ## Base Code for Implementation of useContext.
 >  - Import react and "use client"
@@ -76,6 +77,7 @@ export const UserAuth = () => {
 
 
 <br/>
+
 ## Get User Auth from google 
 >  - import onAuthStateChanged from firebase/auth
 >  - set change to user state
