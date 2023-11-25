@@ -65,7 +65,12 @@ export const UserAuth = () => {
 };
 
 ```
-## Add Google Sign In
+# Add Google Sign In
+
+<br/>
+
+## Get User Auth from google 
+>  Add sign in
 ```jsx
 "use client";
 import { useContext, createContext, useState, useEffect } from "react";
@@ -107,6 +112,5 @@ export const UserAuth = () => {
 };
 
 ```
-## Get User Auth from google 
->  Add sign in
+
 
