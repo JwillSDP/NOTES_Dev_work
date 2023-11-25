@@ -110,35 +110,3 @@ export const UserAuth = () => {
 ## Get User Auth from google 
 >  Add sign in
 
-# Use Firebase Context
-
-```jsx
-   const { user, googleSignIn, logOut } = UserAuth();
-   const [loading, setLoading] = useState(true);
-
-   const handleSignIn = async () => {
-      try {
-         await googleSignIn();
-      } catch (error) {
-         console.log(error);
-      }
-   };
-
-   const handleSignOut = async () => {
-      try {
-         await logOut();
-      } catch (error) {
-         console.log(error);
-      }
-   };
-
-   useEffect(() => {
-      const checkAuthentication = async () => {
-         // eslint-disable-next-line no-undef
-         await new Promise((resolve) => setTimeout(resolve, 50));
-         setLoading(false);
-      };
-      checkAuthentication();
-   }, [user]);
-   console.log(user);
-```
