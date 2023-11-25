@@ -3,8 +3,7 @@
 
 
 ```jsx
-"use client";
-import { useContext, createContext, useState, useEffect } from "react";
+
 import {
    signInWithPopup,
    signOut,
@@ -15,8 +14,7 @@ import { auth } from "../_firebaseAuth";
 
 const AuthContext = createContext();
 
-export const AuthContextProvider = ({ children }) => {
-   const [user, setUser] = useState(null);
+
 
    const googleSignIn = () => {
       const provider = new GoogleAuthProvider();
@@ -58,17 +56,8 @@ import { useContext, createContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-   const [user, setUser] = useState(null); 
-
-   useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-         setUser(currentUser);
-      });
-      return () => unsubscribe();
-   }, [user]);
-
    return (
-      <AuthContext.Provider value={{ user}}>
+      <AuthContext.Provider value={}>
          {children}
       </AuthContext.Provider>
    );
@@ -83,11 +72,44 @@ export const UserAuth = () => {
 >  - Import react and "use client"
 >  - Create context in the AuthContext variable
 >  - Create Context Provider
->  - Assign state values
->  - Pass "value" property to Provider --> add values
+>  - Pass Children components
+>  - Export Provider and useContext
+
 
 <br/>
 
+```jsx
+"use client";
+import { useContext, createContext, useState, useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+
+const AuthContext = createContext();
+
+export const AuthContextProvider = ({ children }) => {
+   const [user, setUser] = useState(null); 
+
+   useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+         setUser(currentUser);
+      });
+      return () => unsubscribe();
+   }, [user]);
+
+   return (
+      <AuthContext.Provider value={{user}}>
+         {children}
+      </AuthContext.Provider>
+   );
+};
+
+export const UserAuth = () => {
+   return useContext(AuthContext);
+};
+
+```
+> ## Get User Auth from google 
+>  - import onAuthStateChanged from firebase/auth
+>  - set change to user state
 
 # Use Firebase Context
 
