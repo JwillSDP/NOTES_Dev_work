@@ -80,8 +80,8 @@ export const UserAuth = () => {
 
 ```
 > ## Base Code for Implementation of useContext.
->  - Create context in the AuthContext variable
 >  - Import react and "use client"
+>  - Create context in the AuthContext variable
 >  - Create Context Provider
 >  - Assign state values
 >  - Pass "value" property to Provider --> add values
