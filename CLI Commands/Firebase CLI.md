@@ -51,6 +51,11 @@ firebase projects:list
 firebase firestore:databases:list
 ```
 
+##  Lists all the extension instances installed in a Firebase project. Prints the instance ID for each extension.
+``` bash
+firebase ext:list
+```
+
 <br></br>
 
 ### Firebase Logout
