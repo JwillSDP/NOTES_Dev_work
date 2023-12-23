@@ -33,6 +33,11 @@ firebase init
 > - **firebase.json** configuration file that lists your project configuration.
 > - **.firebaserc** file that stores your project aliases.
 
+##  Prints the Google services configuration of a Firebase App
+``` bash
+firebase apps:sdkconfig
+```
+
 <br></br>
 
 ## Firebase projects
@@ -40,6 +45,11 @@ firebase init
 firebase projects:list
 ```
 > Test that the CLI is properly installed and accessing your account by listing your Firebase projects. The displayed list should be the same as the Firebase projects listed in the [Firebase console](https://console.firebase.google.com/u/0/?_gl=1*14imetw*_ga*NjE2NDk0NjYyLjE2OTI1NDUxMjI.*_ga_CW55HF8NVT*MTY5MjU0NTEyMi4xLjAuMTY5MjU0NTEyMi4wLjAuMA..&pli=1)
+
+##  List databases in your Firebase project
+``` bash
+firebase firestore:databases:list
+```
 
 <br></br>
 
@@ -65,15 +75,13 @@ firebase use --clear
 <br></br>
 
 
-
-
 ##  View and test your Firebase project on locally hosted URLs
 ``` bash
 firebase serve --only hosting
 ```
 
 
-##  Prints the Google services configuration of a Firebase App
+##  List available locations for your Cloud Firestore database
 ``` bash
-firebase apps:sdkconfig
+firebase firestore:locations
 ```
