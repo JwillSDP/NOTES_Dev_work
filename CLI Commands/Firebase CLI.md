@@ -71,3 +71,9 @@ firebase use --clear
 ``` bash
 firebase serve --only hosting
 ```
+
+
+##  Prints the Google services configuration of a Firebase App
+``` bash
+firebase apps:sdkconfig
+```
