@@ -39,8 +39,9 @@ firebase apps:sdkconfig
 ```
 
 <br></br>
+#  FIREBASE LISTS
 
-## Firebase projects
+## Firebase projects List
 ``` bash
 firebase projects:list
 ```
