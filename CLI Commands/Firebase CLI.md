@@ -56,6 +56,21 @@ firebase firestore:databases:list
 firebase ext:list
 ```
 
+##  Lists all Hosting sites for the active Firebase project
+``` bash
+firebase hosting:sites:list
+```
+
+##  Lists all channels (including the "live" channel) in the default Hosting site
+``` bash
+firebase hosting:channel:list
+```
+
+##  List all database instances for this project. Accepts the --location option for listing databases in a specified region
+``` bash
+database:instances:list
+```
+
 <br></br>
 
 ### Firebase Logout
