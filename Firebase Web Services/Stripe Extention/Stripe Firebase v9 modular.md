@@ -40,6 +40,28 @@ async function getCustomClaimRole() {
   }
 }
 ```
+Get the customer’s subscription
+Subscription details are synced to the subscriptions sub-collection in the user’s corresponding customer doc.
+```jsx
+import { collection, onSnapshot, query, where, getFirestore } from "firebase/firestore";
+
+const db = getFirestore();
+
+async function listenToActiveSubscriptions() {
+  const q = query(collection(db, "customers", currentUser.uid, "subscriptions"), where("status", "in", ["trialing", "active"]));
+
+  onSnapshot(q, (snapshot) => {
+    const doc = snapshot.docs[0]; // Assuming only one active/trialing subscription
+
+    if (doc) {
+      console.log(doc.id, " => ", doc.data());
+    } else {
+      console.log("No active or trialing subscription found.");
+    }
+  });
+}
+
+```
 ## List available products and prices
 Products and pricing information are normal collections and docs in your Cloud Firestore and can be queried as such:
 
@@ -101,6 +123,47 @@ async function createCheckoutSession() {
 > 4. **Path Construction:** Use collection(db, "customers", currentUser.uid, "checkout_sessions") to construct the path to the nested collection.
 > 5. **Data Fields:** Pass the data fields as an object to addDoc.
 > 6. **Return Value:** addDoc returns a DocumentReference, which you can use to access the newly created document.
+
+> Applying discount, coupon, promotion codes
+You can create customer-facing promotion codes in the Stripe Dashboard. Refer to the docs for a detailed guide on how to set these up.
+
+In order for the promotion code redemption box to show up on the checkout page, set allow_promotion_codes: true when creating the checkout_sessions document:
+
+```jsx
+import { collection, addDoc, getFirestore } from "firebase/firestore";
+
+const db = getFirestore();
+
+async function createCheckoutSessionWithPromoCodes() {
+  const docRef = await addDoc(collection(db, "customers", currentUser, "checkout_sessions"), {
+    price: "price_xxxxxxxxxx",
+    allow_promotion_codes: true,
+    success_url: window.location.origin,
+    cancel_url: window.location.origin,
+  });
+
+  console.log("Checkout session document created with ID: ", docRef.id);
+}
+```
+Applying promotion codes programmatically:
+
+```jsx
+import { collection, addDoc, getFirestore } from "firebase/firestore";
+
+const db = getFirestore();
+
+async function createCheckoutSessionWithPromoCodes() {
+  const docRef = await addDoc(collection(db, "customers", currentUser, "checkout_sessions"), {
+    price: "price_xxxxxxxxxxxxxx",
+    promotion_code: "promo_xxxxxxxxxxxxx"
+    success_url: window.location.origin,
+    cancel_url: window.location.origin,
+  });
+
+  console.log("Checkout session document created with ID: ", docRef.id);
+}
+```
+
 
 
 ## Start a subscription with Stripe Checkout
