@@ -40,8 +40,8 @@ async function getCustomClaimRole() {
   }
 }
 ```
-##List available products and prices
-> Products and pricing information are normal collections and docs in your Cloud Firestore and can be queried as such:
+## List available products and prices
+Products and pricing information are normal collections and docs in your Cloud Firestore and can be queried as such:
 
 ```jsx
 import { collection, getDocs, getFirestore } from "firebase/firestore";
@@ -70,3 +70,35 @@ async function fetchActiveProductsAndPrices() {
 > 5. Retrieving Documents: Use getDocs to fetch documents matching the query.
 > 6. Retrieving Subcollections: Use collection(doc.ref, "prices") to access the "prices" subcollection.
 > 7. Iterating Over Documents: Use forEach to loop through documents and subcollection documents.
+
+
+
+## One-time payments on the web
+You can create Checkout Sessions for one-time payments when referencing a one-time price ID. One-time payments will be synced to Cloud Firestore into a payments collection for the relevant customer doc if you update your webhook handler in the Stripe dashboard to include the following events: payment_intent.succeeded, payment_intent.payment_failed, payment_intent.canceled, payment_intent.processing.
+
+To create a Checkout Session ID for a one-time payment, pass mode: 'payment to the Checkout Session doc creation:
+
+```jsx
+import { collection, addDoc, getFirestore } from "firebase/firestore";
+
+const db = getFirestore();
+
+async function createCheckoutSession() {
+  const docRef = await addDoc(collection(db, "customers", currentUser.uid, "checkout_sessions"), {
+    mode: "payment",
+    price: "price_xxxxxxxxxx", // One-time price created in Stripe
+    success_url: window.location.origin,
+    cancel_url: window.location.origin,
+  });
+
+  console.log("Document written with ID: ", docRef.id);
+}
+
+```
+> 1. Imports: Import collection, addDoc, and getFirestore from firebase/firestore.
+> 2. Accessing Firestore: Use getFirestore() to retrieve the Firestore instance.
+> 3. Creating Documents: Use addDoc to create a new document in the specified collection
+> 4. Path Construction:Use collection(db, "customers", currentUser.uid, "checkout_sessions") to construct the path to the nested collection.
+> 5. Data Fields: Pass the data fields as an object to addDoc.
+> 6. Return Value: addDoc returns a DocumentReference, which you can use to access the newly created document.
+
