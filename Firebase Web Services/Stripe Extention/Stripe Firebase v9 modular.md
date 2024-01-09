@@ -40,3 +40,26 @@ async function getCustomClaimRole() {
   }
 }
 ```
+##List available products and prices
+> Products and pricing information are normal collections and docs in your Cloud Firestore and can be queried as such:
+
+```jsx
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+
+const db = getFirestore();
+
+async function fetchActiveProductsAndPrices() {
+  const querySnapshot = await getDocs(collection(db, "products"), {
+    where: { active: true },
+  });
+
+  querySnapshot.forEach(async (doc) => {
+    console.log(doc.id, " => ", doc.data());
+
+    const priceSnap = await getDocs(collection(doc.ref, "prices"));
+    priceSnap.forEach((priceDoc) => {
+      console.log(priceDoc.id, " => ", priceDoc.data());
+    });
+  });
+}
+```
