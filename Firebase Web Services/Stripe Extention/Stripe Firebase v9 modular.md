@@ -102,3 +102,42 @@ async function createCheckoutSession() {
 > 5. Data Fields: Pass the data fields as an object to addDoc.
 > 6. Return Value: addDoc returns a DocumentReference, which you can use to access the newly created document.
 
+
+## Start a subscription with Stripe Checkout
+To subscribe the user to a specific pricing plan, create a new doc in the checkout_sessions collection for the user. The extension will update the doc with a Stripe Checkout session ID which you then use to redirect the user to the checkout page.
+
+To create a Checkout Session ID for a one-time payment, pass mode: 'payment to the Checkout Session doc creation:
+
+```jsx
+import { collection, addDoc, onSnapshot, getFirestore } from "firebase/firestore";
+
+const db = getFirestore();
+
+async function createCheckoutSessionAndListen() {
+  const docRef = await addDoc(collection(db, "customers", currentUser.uid, "checkout_sessions"), {
+    price: "price_1GqIC8HYgolSBA35zoTTN2Zl",
+    success_url: window.location.origin,
+    cancel_url: window.location.origin,
+  });
+
+  onSnapshot(docRef, (snap) => {
+    const { error, url } = snap.data();
+
+    if (error) {
+      alert(`An error occurred: ${error.message}`);
+      // Handle error and inspect Cloud Function logs
+    }
+
+    if (url) {
+      window.location.assign(url);
+    }
+  });
+}
+
+```
+> 1. Imports: Import onSnapshot along with other Firestore functions.
+> 2. Attaching Listener: Use onSnapshot(docRef, (snap) => { ... }) to listen for changes to the document.
+> 3. Accessing Data: Access data fields within the snapshot as snap.data().error and snap.data().url.
+> 4. Handling Changes: Perform actions based on the presence of error or url within the snapshot data.
+
+
