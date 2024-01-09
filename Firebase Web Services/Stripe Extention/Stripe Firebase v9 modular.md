@@ -124,6 +124,37 @@ async function createCheckoutSession() {
 > 5. **Data Fields:** Pass the data fields as an object to addDoc.
 > 6. **Return Value:** addDoc returns a DocumentReference, which you can use to access the newly created document.
 
+> Adding multiple prices, including one-time setup fees
+In addition to recurring prices, you can add one-time prices. These will only be on the initial invoice. This is useful for adding setup fees or other one-time fees associated with a subscription. To do so you will need to pass a line_items array instead:
+```jsx
+import { collection, addDoc, getFirestore } from "firebase/firestore";
+
+const db = getFirestore();
+
+async function createCheckoutSessionWithMultipleLineItems() {
+  const docRef = await addDoc(collection(db, "customers", currentUser, "checkout_sessions"), {
+    line_items: [
+      {
+        price: "price_1HCUD4HYgolSBA35icTHEXd5", // RECURRING_PRICE_ID
+        quantity: 1,
+        tax_rates: ["txr_1HCjzTHYgolSBA35m0e1tJN5"],
+      },
+      {
+        price: "price_1HEtgDHYgolSBA35LMkO3ExX", // ONE_TIME_PRICE_ID
+        quantity: 1,
+        tax_rates: ["txr_1HCjzTHYgolSBA35m0e1tJN5"],
+      },
+    ],
+    success_url: window.location.origin,
+    cancel_url: window.location.origin,
+  });
+
+  console.log("Checkout session created with ID: ", docRef.id);
+}
+
+
+```
+
 > Applying discount, coupon, promotion codes
 You can create customer-facing promotion codes in the Stripe Dashboard. Refer to the docs for a detailed guide on how to set these up.
 
