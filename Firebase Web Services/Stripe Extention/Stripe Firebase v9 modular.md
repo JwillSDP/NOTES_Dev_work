@@ -63,3 +63,10 @@ async function fetchActiveProductsAndPrices() {
   });
 }
 ```
+> 1. Imports: Import specific functions from firebase/firestore.
+> 2. Accessing Firestore: Use getFirestore() to retrieve the Firestore instance.
+> 3. Querying Collections: Use collection(db, "products") to access the "products" collection.
+> 4. Filtering Data: Pass a where clause to getDocs to filter documents.
+> 5. Retrieving Documents: Use getDocs to fetch documents matching the query.
+> 6. Retrieving Subcollections: Use collection(doc.ref, "prices") to access the "prices" subcollection.
+> 7. Iterating Over Documents: Use forEach to loop through documents and subcollection documents.
