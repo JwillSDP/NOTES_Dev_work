@@ -1,4 +1,4 @@
-
+Alternatively you can validate their role client-side with the JavaScript SDK. When doing so you need to make sure to force-refresh the user token:
 ```jsx
 import { getAuth, getIdTokenResult } from "firebase/auth";
 
