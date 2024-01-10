@@ -85,6 +85,7 @@ import { collection, onSnapshot, query, where, getFirestore } from "firebase/fir
 const db = getFirestore();
 
 async function listenToActiveSubscriptions() {
+  const currentUser = auth.currentUser;
   const q = query(collection(db, "customers", currentUser.uid, "subscriptions"), where("status", "in", ["trialing", "active"]));
 
   onSnapshot(q, (snapshot) => {
@@ -107,7 +108,9 @@ import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const db = getFirestore();
 
+
 async function fetchActiveProductsAndPrices() {
+  const currentUser = auth.currentUser;
   const querySnapshot = await getDocs(collection(db, "products"), {
     where: { active: true },
   });
@@ -139,10 +142,19 @@ To create a Checkout Session ID for a one-time payment, pass mode: 'payment to t
 
 ```jsx
 import { collection, addDoc, getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const db = getFirestore();
+const auth = getAuth();
 
 async function createCheckoutSession() {
+  const currentUser = auth.currentUser;
+
+  if (!currentUser) {
+    // Handle the case where the user is not logged in
+    return;
+  }
+
   const docRef = await addDoc(collection(db, "customers", currentUser.uid, "checkout_sessions"), {
     mode: "payment",
     price: "price_xxxxxxxxxx", // One-time price created in Stripe
