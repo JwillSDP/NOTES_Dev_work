@@ -1,4 +1,5 @@
 # Context/Context.jsx
+## [Using React Context for State Management with Next.js](https://vercel.com/guides/react-context-state-management-nextjs)
 <br/>
 
 ## Base Code for Implementation of useContext.
