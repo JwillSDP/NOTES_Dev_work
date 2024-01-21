@@ -10,6 +10,9 @@ firebase emulators:start
 ```bash
 firebase init functions
 ```
+```bash
+npm install -g firebase-tools
+```
 
 <br />
 
