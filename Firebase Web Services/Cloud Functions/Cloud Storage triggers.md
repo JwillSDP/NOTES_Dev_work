@@ -18,7 +18,7 @@ export archivedopts = onObjectArchived({ bucket: "myBucket" }, (event) => {
 ```
 
 ## Handle Cloud Storage events
-*onObjectArchived Only sent when a bucket has enabled object versioning. This event indicates that the live version of an object has become an archived version, either because it was archived or because it was overwritten by the upload of an object of the same name.
-*onObjectDeleted Sent when an object has been permanently deleted. This includes objects that are overwritten or are deleted as part of the bucket's lifecycle configuration. For buckets with object versioning enabled, this is not sent when an object is archived (see onArchive), even if archival occurs via the storage.objects.delete method.
-*onObjectFinalized Sent when a new object (or a new generation of an existing object) is successfully created in the bucket. This includes copying or rewriting an existing object. A failed upload does not trigger this event.
-*onMetadataUpdated Sent when the metadata of an existing object changes.
+* onObjectArchived Only sent when a bucket has enabled object versioning. This event indicates that the live version of an object has become an archived version, either because it was archived or because it was overwritten by the upload of an object of the same name.
+* onObjectDeleted Sent when an object has been permanently deleted. This includes objects that are overwritten or are deleted as part of the bucket's lifecycle configuration. For buckets with object versioning enabled, this is not sent when an object is archived (see onArchive), even if archival occurs via the storage.objects.delete method.
+* onObjectFinalized Sent when a new object (or a new generation of an existing object) is successfully created in the bucket. This includes copying or rewriting an existing object. A failed upload does not trigger this event.
+* onMetadataUpdated Sent when the metadata of an existing object changes.
