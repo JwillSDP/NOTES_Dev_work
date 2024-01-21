@@ -62,9 +62,8 @@ const {logger} = require("firebase-functions/v2");
 
 
 exports.addmessage = onCall((request) => {
-  // ...
 // Message text passed from the client.
-const text = request.data.text;
+const text = request.data;
 // Authentication / user information is automatically added to the request.
 const uid = request.auth.uid;
 const name = request.auth.token.name || null;
