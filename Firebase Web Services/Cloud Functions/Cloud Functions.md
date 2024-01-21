@@ -60,10 +60,6 @@ exports.addmessage = onRequest(async (req, res) => {
 const {onCall, HttpsError} = require("firebase-functions/v2/https");
 const {logger} = require("firebase-functions/v2");
 
-// Dependencies for the addMessage function.
-const {getDatabase} = require("firebase-admin/database");
-const sanitizer = require("./sanitizer");
-
 
 exports.addmessage = onCall((request) => {
   // ...
