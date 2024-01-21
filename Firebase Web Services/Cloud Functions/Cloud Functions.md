@@ -38,11 +38,11 @@ export const beforesignedin = beforeUserSignedIn((event) => {
 ## You can create a function that triggers when a Firebase user is created using the functions.auth.user().onCreate() event handler:
 > Firebase accounts will trigger user creation events for Cloud Functions when:
 
-⋅⋅* A user creates an email account and password.
-⋅⋅* A user signs in for the first time using a federated identity provider.
-⋅⋅* The developer creates an account using the Firebase Admin SDK.
-⋅⋅* A user signs in to a new anonymous auth session for the first time.
-⋅⋅* A Cloud Functions event is not triggered when a user signs in for the first time using a custom token.
+1. A user creates an email account and password.
+2.  A user signs in for the first time using a federated identity provider.
+3.  The developer creates an account using the Firebase Admin SDK.
+4.  A user signs in to a new anonymous auth session for the first time.
+5.  A Cloud Functions event is not triggered when a user signs in for the first time using a custom token.
 
 <br />
 
