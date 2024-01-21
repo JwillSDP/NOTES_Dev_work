@@ -7,11 +7,12 @@ firebase emulators:start
 ```bash
 firebase emulators:start
 ```
-
-## Initialize your project
 ```bash
 firebase init functions
 ```
+
+## Initialize your project
+
 
 ```jsx
 // The Cloud Functions for Firebase SDK to create Cloud Functions and triggers.
