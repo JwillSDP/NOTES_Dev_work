@@ -3,7 +3,7 @@
 
 <br />
 
-### You can register blocking functions for two events:
+## You can register blocking functions for two events:
 > **Before the user is created:**
 > <br /> Triggers before a new user is saved to the Firebase Authentication database, and before a token is returned to your client app.
 
