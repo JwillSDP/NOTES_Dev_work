@@ -1,17 +1,15 @@
 # Import the required modules and initialize an app
 
 ## Deploy functions to a production environment
-```jsx
-firebase deploy --only functions
-
+```bash
 firebase emulators:start
 ```
-```jsx
+```bash
 firebase emulators:start
 ```
 
 ## Initialize your project
-```jsx
+```bash
 firebase init functions
 ```
 
