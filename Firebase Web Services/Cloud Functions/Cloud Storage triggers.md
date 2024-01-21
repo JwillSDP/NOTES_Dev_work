@@ -21,6 +21,8 @@ export archivedopts = onObjectArchived({ bucket: "myBucket" }, (event) => {
 });
 ```
 
+<br />
+
 ## Handle Cloud Storage events
 
 * **onObjectArchived** <br /> Only sent when a bucket has enabled object versioning. This event indicates that the live version of an object has become an archived version, either because it was archived or because it was overwritten by the upload of an object of the same name.
