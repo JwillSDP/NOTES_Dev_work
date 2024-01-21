@@ -27,3 +27,32 @@ export const beforesignedin = beforeUserSignedIn((event) => {
   // TODO
 });
 ```
+
+<br />
+
+# Firebase Authentication triggers
+> You can trigger functions in response to the creation and deletion of Firebase user accounts. For example, you could send a welcome email to a user who has just created an account in your app. Examples on this page are based on a sample that does exactly this—sends welcome and farewell emails upon account creation and deletion.
+
+<br />
+
+## You can create a function that triggers when a Firebase user is created using the functions.auth.user().onCreate() event handler:
+> Firebase accounts will trigger user creation events for Cloud Functions when:
+
+⋅⋅* A user creates an email account and password.
+⋅⋅* A user signs in for the first time using a federated identity provider.
+⋅⋅* The developer creates an account using the Firebase Admin SDK.
+⋅⋅* A user signs in to a new anonymous auth session for the first time.
+⋅⋅* A Cloud Functions event is not triggered when a user signs in for the first time using a custom token.
+
+<br />
+
+```jsx
+exports.sendWelcomeEmail = functions.auth.user().onCreate((user) => {
+  // ...
+});
+```
+```jsx
+exports.sendByeEmail = functions.auth.user().onDelete((user) => {
+  // ...
+});
+```
