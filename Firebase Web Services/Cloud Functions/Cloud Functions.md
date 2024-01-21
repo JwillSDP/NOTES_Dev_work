@@ -2,7 +2,7 @@
 > Blocking functions let you execute custom code that modifies the result of a user registering or signing in to your app. For example, you can prevent a user from authenticating if they don't meet certain criteria, or update a user's information before returning it to your client app.
 
 <br />
-<br />
+
 ### You can register blocking functions for two events:
 > **Before the user is created:**
 > <br /> Triggers before a new user is saved to the Firebase Authentication database, and before a token is returned to your client app.
