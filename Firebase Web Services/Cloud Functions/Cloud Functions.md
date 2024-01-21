@@ -53,4 +53,30 @@ exports.addmessage = onRequest(async (req, res) => {
 
 <br />
 
+# Call functions from your app
+
+```jsx
+// Dependencies for callable functions.
+const {onCall, HttpsError} = require("firebase-functions/v2/https");
+const {logger} = require("firebase-functions/v2");
+
+// Dependencies for the addMessage function.
+const {getDatabase} = require("firebase-admin/database");
+const sanitizer = require("./sanitizer");
+
+
+exports.addmessage = onCall((request) => {
+  // ...
+// Message text passed from the client.
+const text = request.data.text;
+// Authentication / user information is automatically added to the request.
+const uid = request.auth.uid;
+const name = request.auth.token.name || null;
+const picture = request.auth.token.picture || null;
+const email = request.auth.token.email || null;
+});
+```
+
+
+
 
