@@ -5,7 +5,7 @@
 firebase emulators:start
 ```
 ```bash
-firebase emulators:start
+firebase emulators:start --only functions
 ```
 ```bash
 firebase init functions
