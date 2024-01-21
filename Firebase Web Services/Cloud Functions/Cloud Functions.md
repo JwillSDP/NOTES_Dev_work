@@ -75,14 +75,30 @@ exports.sendByeEmail = functions.auth.user().onDelete((user) => {
 *  A Cloud Functions event is not triggered when a user signs in for the first time using a custom token.
 
 <br />
-
+### > To define a Cloud Firestore trigger, specify a document path and an event type:
 ```jsx
-exports.sendWelcomeEmail = functions.auth.user().onCreate((user) => {
-  // ...
+import {
+  onDocumentWritten,
+  onDocumentCreated,
+  onDocumentUpdated,
+  onDocumentDeleted,
+  Change,
+  FirestoreEvent
+} from "firebase-functions/v2/firestore";
+
+exports.myfunction = onDocumentWritten("my-collection/{docId}", (event) => {
+   /* ... */ 
 });
 ```
+
 ```jsx
-exports.sendByeEmail = functions.auth.user().onDelete((user) => {
-  // ...
+import {
+  onDocumentWritten,
+  Change,
+  FirestoreEvent
+} from "firebase-functions/v2/firestore";
+
+exports.myfunction = onDocumentWritten("users/marie", (event) => {
+  // Your code here
 });
 ```
