@@ -1,5 +1,20 @@
 # Import the required modules and initialize an app
 
+## Deploy functions to a production environment
+```jsx
+firebase deploy --only functions
+
+firebase emulators:start
+```
+```jsx
+firebase emulators:start
+```
+
+## Initialize your project
+```jsx
+firebase init functions
+```
+
 ```jsx
 // The Cloud Functions for Firebase SDK to create Cloud Functions and triggers.
 const {logger} = require("firebase-functions");
@@ -32,10 +47,6 @@ exports.addmessage = onRequest(async (req, res) => {
 });
 ```
 
-## Deploy functions to a production environment
-```jsx
+<br />
 
 
- firebase deploy --only functions
- 
-```
