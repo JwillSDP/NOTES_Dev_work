@@ -266,7 +266,71 @@ exports.generateThumbnail = onObjectFinalized({cpu: 2}, async (event) => {
 });
 
 ```
+# Auth blocking triggers
 
+- **Before the user is created:** Triggers before a new user is saved to the Firebase Authentication database, and before a token is returned to your client app.
+
+- **Before the user is signed in:** Triggers after a user's credentials are verified, but before Firebase Authentication returns an ID token to your client app. If your app uses multi-factor authentication, the function triggers after the user verifies their second factor. Note that creating a new user also triggers both these events.
+
+```jsx
+import {
+  beforeUserCreated,
+  beforeUserSignedIn,
+} from "firebase-functions/v2/identity";
+
+export const beforecreated = beforeUserCreated((event) => {
+  // TODO
+  return;
+});
+
+export const beforesignedin = beforeUserSignedIn((event) => {
+  // TODO
+});
+```
+
+## Blocking registration or sign-in
+
+```jsx
+
+// To block a registration or sign-in attempt, throw an HttpsError in your function
+import { HttpsError } from "firebase-functions/v2/identity";
+
+throw new HttpsError('permission-denied', 'Unauthorized request origin!');
+
+// block users who are not within a specific domain from registering for your app
+
+export const beforecreated = beforeUserCreated((event) => {
+  const user = event.data;
+  // (If the user is authenticating within a tenant context, the tenant ID can be determined from
+  // user.tenantId or from event.resource, e.g. 'projects/project-id/tenant/tenant-id-1')
+
+  // Only users of a specific domain can sign up.
+  if (!user?.email?.includes('@acme.com')) {
+    throw new HttpsError('invalid-argument', "Unauthorized email");
+  }
+});
+
+// Blocking users with unverified emails from registering
+
+export const beforecreated = beforeUserCreated((event) => {
+  const user = event.data;
+  if (user.email && !user.emailVerified) {
+    throw new HttpsError(
+      'invalid-argument', 'Unverified email');
+  }
+});
+
+// Treating certain identity provider emails as verified
+
+export const beforecreated = beforeUserCreated((event) => {
+  const user = event.data;
+  if (user.email && !user.emailVerified && event.eventType.includes(':facebook.com')) {
+    return {
+      emailVerified: true,
+    };
+  }
+});
+```
 
 
 
