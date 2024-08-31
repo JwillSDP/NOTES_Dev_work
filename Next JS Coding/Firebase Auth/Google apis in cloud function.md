@@ -26,18 +26,20 @@ exports.createUserDocument = functions.auth.user().onCreate(async (user: UserRec
 
       // **3. Prepare data for the new row**
       const newRow = [user.displayName, user.email, user.uid];
+      // 3. Prepare data for the new row (including first and last name)
+      const newRow = [user.displayName?.split(" ")[0], user.displayName?.split(" ")[1], user.email, user.uid, user.displayName]; 
 
-      // **4. Append the new row to the sheet**
+      // 4. Append the new row to the sheet (update the range)
       await sheets.spreadsheets.values.append({
          spreadsheetId,
-         range: 'Sheet1!A:C', // Assuming you want to add data to columns A, B, and C
+         range: 'Sheet1!A:E', // Updated range to include 4 columns (A, B, C, D, E)
          valueInputOption: 'USER_ENTERED', 
          requestBody: {
-            values: [newRow], // Add the new row data
+            values: [newRow],
          },
       });
 
-      console.log('User data added to Google Sheet!');
+      console.log('User data added to Google Sheet!'); 
    } catch (error) {
       console.error('Error adding user data to Google Sheet:', error);
    }
