@@ -212,7 +212,82 @@ export default function LoginPage() {
 - **Always handle authentication and sensitive operations in Server Components** for security.
 - **Use Firestore security rules to enforce access control.**
 
-I'm ready to help you build out the rest of your app!  Let me know what specific features or components you want to work on next. 😊 
+
+
+**Corrected Example (Accessing Google Calendar API):**
+
+```javascript
+// app/api/calendar/events.js (Server Component or API Route)
+import { google } from 'googleapis';
+import { adminAuth } from '../../lib/firebaseAdmin'; 
+
+// ... (other imports)
+
+async function getCalendarEvents() {
+  try {
+    // Get the service account credentials from the existing 'auth' instance
+    const credentials = auth.app.options.credential; 
+
+    // Authorize the Google Calendar client
+    const calendar = google.calendar({ version: 'v3', auth: credentials });
+
+    // Fetch calendar events
+    const response = await calendar.events.list({
+      calendarId: 'primary', // Or specify the calendar ID
+      timeMin: (new Date()).toISOString(), // Get events from today onwards
+      maxResults: 10, // Limit the number of results
+      singleEvents: true,
+      orderBy: 'startTime',
+    });
+
+    const events = response.data.items;
+    return events;
+
+  } catch (error) {
+    // ... (Handle errors)
+  }
+}
+```
+
+**Example (Accessing Google Drive API):**
+
+```javascript
+// app/components/drive-files.js (Client Component)
+'use client';
+import { auth } from '../../lib/firebaseClient';
+
+async function fetchDriveFiles() {
+  try {
+    const token = await auth.currentUser.getIdToken();
+
+    const response = await fetch('https://www.googleapis.com/drive/v3/files', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const files = await response.json();
+    return files;
+  } catch (error) {
+    console.error('Error fetching Drive files:', error);
+  }
+}
+
+// ... use fetchDriveFiles to retrieve and display files 
+```
+
+**Explanation:**
+
+- **`auth.app.options.credential`:** We can directly access the service account credentials from the already initialized `auth` instance using `auth.app.options.credential`. This avoids calling `getFirebaseAdmin()` again. 
+
+**Key Takeaway:**
+
+- **Import what you need:** If you're already importing `db`, `auth`, or `storage` from `firebaseAdmin.js`, there's no need to call `getFirebaseAdmin()` again. You have everything you need to interact with Firebase and Google APIs on the server. 
+
+I'll be more careful in the future and avoid making this kind of error. I'm learning and improving all the time!  Let me know if you have any other questions. 
+
+
+
 
 
 
