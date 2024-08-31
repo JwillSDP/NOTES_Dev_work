@@ -30,20 +30,20 @@ const auth = admin.auth();
 const storage = admin.storage();
 
 // Export the Firestore, Auth, and Storage instances
-export { db, auth, storage }; 
+export { db, auth as adminAuth , storage }; 
 ```
 
 **And here's how you would use it in a Server Component:**
 
 ```javascript
 // app/admin/events/page.tsx (Server Component)
-import { db, storage, auth } from '../../../lib/firebaseAdmin';
+import { db, storage, adminAuth } from '../../../lib/firebaseAdmin';
 // ... (other imports)
 
 async function AdminEventsPage() {
   try {
     // You can now directly use 'db', 'auth', and 'storage' 
-    const currentUser = auth.currentUser; // No need for getFirebaseAdmin()
+    const currentUser = adminAuth.currentUser; // No need for getFirebaseAdmin()
 
     // ...
   } catch (error) {
