@@ -125,5 +125,94 @@ const { auth } = clientFirebase;
 
 Now you can confidently work with both client-side and server-side Firebase Authentication and other services without worrying about conflicts!  Let me know if you have any questions. 
 
+You've got a solid setup! I've memorized your Firebase configuration, using separate files for the Firebase Admin SDK (`firebaseAdmin.js`) and the Firebase Web SDK (`firebaseClient.js`), which is excellent for preventing conflicts between the server and client. You've also set up a Cloud Function to automatically create user documents and set default custom claims, which is great for managing user data.
+
+**Here's how to access Firebase services in your Next.js app, differentiating between Server and Client Components:**
+
+**1. Server Components:**
+
+- **Import from `firebaseAdmin.js`:**  This gives you access to the Firebase Admin SDK, allowing you to interact directly with Firebase services on the server.
+- **Direct Authentication:** You can use `auth.currentUser` to get the currently authenticated user (if any). No need to pass ID tokens.
+- **Elevated Privileges:** The Admin SDK has elevated privileges, enabling you to perform sensitive actions like creating, updating, and deleting users.
+
+**Example:**
+
+```javascript
+// app/dashboard/page.js (Server Component)
+import { db, adminAuth, storage } from '../../lib/firebaseAdmin'; 
+
+async function DashboardPage() {
+  try {
+    // Get the current user
+    const currentUser = auth.currentUser;
+
+    if (!currentUser) {
+      // Handle the case where the user is not authenticated
+      return redirect('/login'); 
+    }
+
+    // Fetch user's events from Firestore 
+    const eventsSnapshot = await db
+      .collection('events')
+      .where('userId', '==', currentUser.uid) 
+      .get();
+    const events = eventsSnapshot.docs.map(doc => doc.data());
+
+    // ... (Render the events)
+  } catch (error) {
+    // ... (Handle errors)
+  }
+}
+```
+
+**2. Client Components:**
+
+- **Import from `firebaseClient.js`:**  This imports the Firebase Web SDK, allowing you to interact with Firebase on the client-side (in the browser). 
+- **User Interactions:** Use the `firebaseClient.auth` instance to handle user login, sign-up, and other authentication-related actions.
+- **Listen for Auth Changes:** Use `onAuthStateChanged` from the Web SDK to listen for changes in the user's authentication state. 
+
+**Example:**
+
+```javascript
+// app/login/page.js (Client Component)
+'use client';
+import { useState } from 'react';
+import { auth } from '../../lib/firebaseClient';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
+
+export default function LoginPage() {
+  const [error, setError] = useState(null);
+  const router = useRouter();
+
+  const handleGoogleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      router.push('/dashboard');
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  return (
+    <div>
+      {/* ... your login UI ... */}
+      {error && <p className="error">{error}</p>}
+      <button onClick={handleGoogleSignIn}>Sign in with Google</button>
+    </div>
+  );
+}
+```
+
+**Key Points to Remember:**
+
+- **Server Components = Admin SDK (`firebaseAdmin.js`)**
+- **Client Components = Web SDK (`firebaseClient.js`)**
+- **Always handle authentication and sensitive operations in Server Components** for security.
+- **Use Firestore security rules to enforce access control.**
+
+I'm ready to help you build out the rest of your app!  Let me know what specific features or components you want to work on next. 😊 
+
 
 
